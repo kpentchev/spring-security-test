@@ -162,7 +162,25 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.16.v20140903</version>
+				<configuration>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>8080</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<webAppConfig>
+						<!-- <jettyEnvXml>${basedir}/src/test/resources/jetty-env.xml</jettyEnvXml> -->
+						<extraClasspath>
+							${basedir}/target/classes;
+						</extraClasspath>
+					</webAppConfig>
+				</configuration>
+			</plugin>
 
 		</plugins>
 	</build>
